@@ -1,0 +1,138 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model InventoryControllerWeb_Development.Models.User
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		/* Basic styling for the form */
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		.container {
+			max-width: 500px;
+			margin: 0 auto;
+		}
+
+		form {
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="date"],
+		select,
+		input[type="number"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+			input[type="submit"]:hover {
+				background-color: #45a049;
+			}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form asp-action="SaveData" asp-controller="Test" id="frmSubmit" class="mt-5">
+			<div class="row mb-3">
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="UserName" class="control-label">Username <sup>*</sup></label>
+						<input asp-for="UserName" type="text" class="form-control" id="Username" placeholder="Enter username" maxlength="50" autocomplete="off" value="@Model?.UserName">
+						<span asp-validation-for="UserName" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="Name" class="control-label">Name<sup>*</sup></label>
+						<input asp-for="Name" type="text" class="form-control" id="Name" placeholder="Enter name" maxlength="50" autocomplete="off" value="@Model?.Name">
+						<span asp-validation-for="Name" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="Name" class="control-label">Address<sup>*</sup></label>
+						<input asp-for="Address" type="text" class="form-control" id="Address" placeholder="Enter Address" maxlength="50" autocomplete="off" value="@Model?.Address">
+						<span asp-validation-for="Address" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="StateId" class="control-label">State<sup>*</sup></label>
+						<select id="drpEmpList" class="form-control" asp-for="StateId" asp-items="ViewBag.States">
+							<option value="">--Select--</option>
+						</select>
+						<input type="hidden" asp-for="StateId" />
+						<span asp-validation-for="StateId" class="text-danger"></span>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="Phone" class="control-label">Phone<sup>*</sup></label>
+						<input asp-for="Phone" type="text" class="form-control" id="Address" placeholder="Enter Phone" maxlength="50" autocomplete="off" value="@Model?.Phone">
+						<span asp-validation-for="Phone" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="DOB" class="control-label">Date of Birth:<sup>*</sup></label>
+						<input asp-for="DOB" type="text" class="form-control" id="Address" placeholder="Enter DOB" maxlength="50" autocomplete="off" value="@Model?.DOB">
+						<span asp-validation-for="DOB" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="DesignationId" class="control-label">Designation<sup>*</sup></label>
+						<select id="drpDesignation" class="form-control" asp-for="DesignationId" asp-items="ViewBag.Designation">
+							<option value="">--Select--</option>
+						</select>
+						<input type="hidden" asp-for="DesignationId" />
+						<span asp-validation-for="DesignationId" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="formFloating mb-3">
+						<label asp-for="Password" class="control-label">Password:<sup>*</sup></label>
+						<input asp-for="Password" type="text" class="form-control" id="Password" placeholder="Enter DOB" maxlength="50" autocomplete="off" value="@Model?.Password">
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</div>
+				</div>
+
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

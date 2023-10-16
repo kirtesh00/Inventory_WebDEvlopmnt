@@ -1,0 +1,45 @@
+﻿@*@{
+    ViewBag.Title = "Project List";
+}
+
+<h2>Project List</h2>
+
+<table id="projectsTable" class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Projects/GetProjects',
+                type: 'GET',
+                success: function (response) {
+                    var tableBody = $('#projectsTable tbody');
+                    tableBody.empty();
+
+                    $.each(response, function (index, project) {
+                        var row = $('<tr>');
+                        row.append($('<td>').text(project.Id));
+                        row.append($('<td>').text(project.Name));
+                        row.append($('<td>').text(project.Description));
+                        row.append($('<td>').text(project.IsActive ? 'Yes' : 'No'));
+                        tableBody.append(row);
+                    });
+                },
+                error: function (error) {
+                    console.log('Error:', error);
+                }
+            });
+        });
+    </script>
+}
+*@
